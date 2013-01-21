@@ -1,0 +1,1 @@
+-Pre calculate events when chart is loaded/created; or once calculated on demand, cache them.

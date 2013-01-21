@@ -1,0 +1,25 @@
+//------------- FIXED ----------------------------
+
+-When I select 'min' before 'max' and deselect it, it crashes. This is because the index 0 hasn't been defined and when we loop throug the positions of eventsMapping, it crashes. How can I loop through all the keys of an array in javascript???. DONE ($.each).
+
+-I'm creating tabs dinamically, but they are not creating well after the first creation. It looks like if some elements lose some classes that jquery adds to markup those elements. DONE ($("#tabsmain").tabs("destroy").tabs(...))
+
+-When I refresh the page, the radio button to select 'I' does not select. DONE.
+
+-Cuando tengo seleccionada una tab que no es la 'Main', cuando cargo otro fichero, no se dibuja el grafico. Creo que lo que pasa es que el grafico se crea y se dibuja antes de que la tab se cree y este seleccionada, lo que hace que el grafico no se pinte. DONE (cambie el orden en que se crean las cosas... primero las tabs y despues el grafico).
+
+-La fecha no esta saliendo bien en el globo de los eventos para el desbalance. Lo que pasa es que el data provider no tiene una key de nombre DATE y TIME. Lo mejor es usar siempre DATETIME y formatear el valor. Como formatear fechas con javascript???. DONE (hice unos cambios y se arreglo solo... en realidad no se que paso)
+
+-When I update a node, the new values are not updated internally in the application, unless we deselect and select the node again. Fix this. DONE (with a hack).
+
+-La WH_SYS se da en KVAH, pero cuando llega a los miles, se da en MVAH. Al expresarse en MVAH los valores comienzan a ser de 1 y pico, y no de 1000 y pico. Esto hace que la grafica caiga de momento, provocando que no se muestre realmente lo que esta pasando. Tengo que valorar como resolver esto. DONE (poniendo las conversiones en la especificacion de la U/M, ej: "KWH|MWH(1000)".. this is a hack).
+
+//---------- UNFIXED -------------------------
+
+-Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs o sean selectables mientras no se pinte el grafico.
+
+-Me paso que estaba cargando un fichero, pero la respuesta del servidor se demoro y mientras se guardaba el fichero en el servidor, seleccione otro nodo del treeview; cuando llego la respuesta, se creo un nodo 'file' dentro del nodo que tenia seleccionado, y no dentro del que estaba seleccionado cuando se subio el fichero. Arreglar esto!!!.
+
+-The select/pan buttons doesn't refresh when I change from Main tab to Unbalance/THD tabs. When I change tabs, the select button should be selected (this should be the default behavior of every chart). I think the best solution is to integrate these buttons into the chart itself.
+
+-El paneo no pincha para los serial charts. Tengo que buscar como hacerlo, porque es diferente que para el stock chart. Lo mejor es extender ambos tipos de charts y que tengan esta funcionalidad embebida.

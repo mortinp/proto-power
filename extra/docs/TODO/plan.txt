@@ -1,0 +1,9 @@
+-Prevent node renaming/deletion/etc in jstree.
+
+-Definir la forma en que van a estar estructurados los reportes: las tablas que se van a mostrar, los parametros, etc. Creo que se pudiera mostrar una tabla con un resumen de estadisticas de varios valores. Por ejemplo, se puede mostrar los valores rms para I, V, P, etc, los maximos, minimos, etc.
+
+-Crear los graficos con un sistema que use decorators. Esto permitiria crear los graficos a partir de sus componentes fundamentales: plotting area, legend, cursor, period selector, dataset selector, scrollbar, etc. Asi podriamos formar cualquier grafico mediante una combinacion de todos o algunos de estos elementos. La configuracion de cada grafico deberia estar guardada tambien en una BD y deberia venir del servidor... (tengo que definir bien que es lo que va a ser configurable en el servidor para ir avanzando ya en la implementacion de cada cosa).
+
+-Poner la caja de botones de los eventos max y min fuera del area del grafico. Se ev mal cuando el grafico se esta cargando.
+
+-Buscar por que cuando el grafico se esta pintando, toda la aplicacion se bloquea???. Para evitar esto podre clonar el div primero y despues copiar el html resultante dentro del div original (double buffer)???. GOOD IDEA!!!. O se puede hace con un iframe???

@@ -1,0 +1,26 @@
+{
+  "core": {"initially_open": ["root"]},
+  "ui": {"initially_select": ["root"]},
+  "themes": {"icons": true, "dots":false},  
+  "plugins": ["themes", "json_data", "ui", "types", "crrm"],
+  "rules": {"deletable":["file"], "clickable": ["file"]},
+  "types": {
+    "types": {
+	  "root": {
+	    "icon": {"image":"/proto-power/modules/pqm-projects-management/images/icons/root.png"}
+	  },
+	  "file":{
+        "icon":{"image":"/proto-power/modules/pqm-projects-management/images/icons/file.png"}
+      },
+      "project":{
+        "icon":{"image":"/proto-power/modules/pqm-projects-management/images/icons/folder.png"}
+      },
+      "device":{
+        "icon":{"image":"/proto-power/modules/pqm-projects-management/images/icons/print-button.png"}
+      },
+      "datablock":{
+        "icon":{"image":"/proto-power/modules/pqm-projects-management/images/icons/msginfo.png"}
+      }
+	}
+  }
+}

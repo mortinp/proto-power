@@ -1,0 +1,39 @@
+Todo comienza con la construccion del treeview de los proyectos. La construccion del treeview garantiza que los nodos tengan los metadatos necesarios para que el codigo cliente pueda realizar peticiones al servidor para crear contextos de analisis, o para obtener los datos para cierto tipo de analisis.
+
+OBTENIENDO UN CONTEXTO DE ANALISIS:
+
+1- Cliente: Para crear un contexto de analisis, el cliente envia el id del device y el nombre del data-block que se pretende analizar, de la forma siguiente:
+
+file=pathToFile&data-block=nameOfDataBlock
+
+2- Servidor: El servidor recibe los parametros y busca en la BD las caracteristicas del dispositivo requerido, y los datos de los ficheros contenidos dentro del data-block especificado. Por otro lado, se crea por defecto un analisis de power con el fichero correspondiente dentro del data-block, y se envian todas las configuraciones para este analisis (como mismo se hace hasta ahora). La respuesta del servidor tiene la forma siguiente:
+
+{
+	device: {name:'device1', kva:34, power:22},
+	analisis: 
+		{power:
+			{sub:[{name:'power', path:'path/to/power/file', ref_parameter:'I'}],
+			 }
+	
+		harmo:
+			{sub:[{name:'harmo-i1', path:'path/to/harmo_i1/file', ref_parameter:'H'}, {name:'harmo-v2', path:'path/to/harmo_v2/file', ref_parameter:'H'}],
+			 }
+	},
+	currentAnalisis: {type:'power', data: {...data loaded through parameter_reader.php...}}
+}
+
+NOTES:
+
+-Each key of entry 'analisis' becomes an analisis.
+-Each value in the array for the key 'sub' becomes a subanalisis.
+-The value of currentAnalisis entry becomes the data that will be initially loaded.
+
+3- Cliente: Con la respuesta del servidor, el cliente crea los siguientes objetos:
+
+-Context: Se crea un objeto contexto que es el controlador de los analisis.
+-Device: se crea con los datos en response.device. El device lo contiene el contexto.
+-Analisis: Se crean varios objetos analisis, usando cada una de las entradas en response.analisis.
+-Subanalisis:Se debe crear un subanalisis para cada objeto dentro del arreglo que indica la entrada sub en cada analisis. Los datos en cada sub son los que se envian al servidor para cargar los datos asociados a un subanalisis, o sea, el path al archivo y el ref_parameter. POr ejemplo, en los armonicos se crea un subanalisis para ver los armonicos de cada fase por separado, y para cada subanalisis se especifica el fichero y el indicador para los parametros que se deben cargar, que en este caso es 'H'.
+
+Ademas el cliente usa los datos en currentAnalisis.data para mostrar inicialmente. La entrada currentAnalisis.type indica cual de los analisis se debe mostrar primero, y los datos se deben obtener para el primer subanalisis del analisis indicado. 
+TODO: Se podran poner estos datos mejor en el mismo subanalisis, y en el cliente verificar cual subanalisis contiene la entrada data???

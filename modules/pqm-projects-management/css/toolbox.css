@@ -1,0 +1,33 @@
+/* TOOL-BOX */
+.tool-box {
+	border:1px solid #666666; 
+	padding:2px 2px 2px 2px; 
+	overflow:auto;
+}
+
+.tool-button{
+	width:16px;
+	height:16px;
+	float:left;
+	margin-left: 10px;
+}
+
+.button-add-project {
+	background: #F1F1F1 url('../images/icons/folder.png') top left no-repeat;
+}
+.button-add-device {
+	background: #F1F1F1 url('../images/icons/print-button.png') top left no-repeat;
+}
+.button-add-datablock {
+	background: #F1F1F1 url('../images/icons/edit-16.png') top left no-repeat;
+}
+.button-modify-node {
+	background: #F1F1F1 url('../images/icons/edit-16.png') top left no-repeat;
+}
+.button-delete-node {
+	background: #F1F1F1 url('../images/icons/delete-16.png') top left no-repeat;
+}
+
+.button-upload-file {
+	background: #F1F1F1 url('../images/icons/file.png') top left no-repeat;
+}

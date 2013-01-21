@@ -1,0 +1,5 @@
+-Change graph color when values are over certain threshold. DONE (ex. graph.negativeLineColor = "#999999"; graph.negativeBase = 8;)
+
+-Library to create tables (preferably bidimensional tables).
+
+-Como organizar los label de las leyendas para que queden alineados cuando cogen mas de una fila.

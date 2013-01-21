@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- JQUERY -->
+		<script type="text/javascript" src="../common/js/etc/jquery/jquery-1.8.3.min.js"></script>
+	
+		<!-- JQUERY UI -->
+		<script type="text/javascript" src="../common/js/etc/jquery/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
+		
+		<!-- JQUERY UI THEME -->
+		<link type="text/css" href="../common/js/etc/jquery/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet"/>
+		<link type="text/css" href="../modules/pqm-projects-management/css/generic-base.css" rel="stylesheet" />
+		
+		<!-- FORMS VALIDATION (JQUERY PLUGIN)-->
+		<script language="JavaScript" type="text/javascript" src="../common/js/etc/jquery-validation-1.10.0/dist/jquery.validate.js"></script>
+		
+		<!-- BLOCK UI (JQUERY PLUGIN)-->
+		<script language="JavaScript" type="text/javascript" src="../common/js/etc/jquery/plugins/jquery.blockUI.js"></script>
+		
+		<!-- DOCKING -->
+		<link href="../common/js/docking/leftdock-style.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../common/js/docking/leftdock.js"></script>
+		
+		<!-- JSTREE -->
+		<script type="text/javascript" src="../common/js/etc/jstree/jquery.jstree.js"></script>
+		
+		<!-- AMCHARTS -->
+		<script type="text/javascript" src="../common/js/etc/amcharts/amstockchart_2.8.4/amcharts/amstock.js"></script>
+		<link href="../common/js/etc/amcharts/amstockchart_2.8.4/amcharts/style.css" media="screen" rel="stylesheet" type="text/css" />
+		
+		<!-- AJAX UPLOAD -->
+		<link href="../common/js/etc/valums-file-uploader-e4c97df/client/fileuploader.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../common/js/etc/valums-file-uploader-e4c97df/client/fileuploader.js"></script>
+		
+		<!-- MODULES -->
+		<script type="text/javascript" src="../modules/pqm-projects-management/treeview-manager.js"></script>
+		<script type="text/javascript" src="../modules/pqm-projects-management/toolbox.js"></script>
+		<script type="text/javascript" src="../modules/pqm-projects-management/forms-manager.js"></script>
+		<script type="text/javascript" src="../modules/pqm-projects-management/pqm-projects-manager.js"></script>
+		<link href="../modules/pqm-projects-management/css/toolbox.css" media="screen" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="../modules/pqm-analisis-context/pqm-analisis-context.js"></script>
+		<script type="text/javascript" src="../modules/pqm-analisis-context/reporting.js"></script>
+		<link href="../modules/charting/extamcharts.css" media="screen" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../modules/charting/extamcharts.js"></script>
+		<script type="text/javascript" src="../modules/charting/chart-analyser.js"></script>
+		<script type="text/javascript" src="../modules/charting/chart-builder.js"></script>
+		
+		<!-- CUSTOM -->
+		<script type="text/javascript" src="js/analisis.js"></script>
+		
+	</head>
+	<body style="overflow:auto;">
+	<ul id="dock" class="ui-widget ui-widget-content">
+        <li id="projects-docked-tab">
+			<div class="panel"><br>
+				<div class="tool-box" id="toolbox" style="height: 18px"></div><br>
+				<div id="projects-tree" style="width:255px; height=100%; float:left important!; margin:0; background-color:#F1F1F1;clear:both;overflow-x:scroll;"></div>
+			</div>
+		</li>
+    </ul>
+	<div id="content">
+		<!--<a href="../index.html" style="float:right">Home</a><br>-->
+		
+		<div id="subanalisis-selectors"></div>
+		<div id="tabsmain"></div>
+		
+		<br>
+		
+		<div id="project-info" style="width:20%;float:left"></div>
+		<div id="device-info" style="width:20%;float:left"></div>
+		<div id="datablock-info" style="width:20%;float:left"></div>
+		
+		<div id="reports-container" style="clear:both"></div>
+	</div>
+	</body>
+</html>

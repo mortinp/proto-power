@@ -1,0 +1,8 @@
+-Find projects by user. DONE
+.
+
+-Change the chart of harmos to stock chart. DONE.
+
+-Hacer el loading de los graficos, registrando un handler en el evento 'init'. DONE (lo hice en el draw()). DONE.
+
+-Crear una validacion en el ChartBuilder, para que si el grafico tiene muchos puntos, entonces se reduzca la cantidad de puntos mostrados al inicio (usar funcion zoom). DONE.

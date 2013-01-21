@@ -1,0 +1,20 @@
+-Allow the capability to set events for each type of analisis. I have to treat events divs with a class and not with an id, because I might need to create multiple event-boxes, one for each analisis. I also need to create the configuration for each type of analisis in the server. For example, like this: 
+
+"analisis"=>array(
+	array(
+		"type"=>"main", 
+		"events"=>array("min", "max")), 
+		"chart"=>array(
+			"type"=>"multiDatasetStockChart",
+			...)
+	array(
+		"type"=>"unbalance", 
+		"events"=>array("min", "max"))
+);
+
+DONE.
+
+-Should measurement files be assigned to devices (this is the only way we can make calculations using the measurements data and the devices characteristics at the same time, e.g. for calculating some thresholds in the norms)???. DONE (devices->datablocks->files)
+
+-Allow the addition of devices and their characteristics to the projects. For this, I must study jquery ui dialog API. Make a prototype with this. DONE.
+
