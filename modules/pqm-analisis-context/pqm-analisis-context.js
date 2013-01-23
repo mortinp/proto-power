@@ -185,7 +185,8 @@ PQMAnalisis.prototype = {
 		selectorsContainer.empty();
 		this._addParameterSelectors(selectorsContainer, data.selectors, scope, type);
 		
-		// Create chart and append events
+		this._drawChartAndWidgets('main', this._places.main_chart_panel, "tabsmain-main");
+		/*// Create chart and append events
 		chartConfig = {
 			where: this._places.main_chart_panel, 
 			min_time: data["options"]["MINTIME"],
@@ -205,6 +206,38 @@ PQMAnalisis.prototype = {
 		}
 		this.mainChart = this.chartBuilder[data.analisis.main.chart.type](data["data"], chartConfig);
 		this._appendEventsSelectors(this.mainChart, data.analisis.main.events, $("#tabsmain-main"));
+		
+		var exportButton = $("<input type='button' value='Export' id='export-button'></input>").click(function() {
+			items = AmCharts.getExport(chartConfig.where);
+			
+			var img = items[0];
+			// atob to base64_decode the data-URI
+			var image_data = atob(img.src.split(',')[1]);
+			// Use typed arrays to convert the binary data to a Blob
+			var arraybuffer = new ArrayBuffer(image_data.length);
+			var view = new Uint8Array(arraybuffer);
+			for (var i=0; i<image_data.length; i++) {
+				view[i] = image_data.charCodeAt(i) & 0xff;
+			}
+			try {
+				// This is the recommended method:
+				var blob = new Blob([arraybuffer], {type: 'application/octet-stream'});
+			} catch (e) {
+				// The BlobBuilder API has been deprecated in favour of Blob, but older
+				// browsers don't know about the Blob constructor
+				// IE10 also supports BlobBuilder, but since the `Blob` constructor
+				//  also works, there's no need to add `MSBlobBuilder`.
+				a = e;
+				var bb = new (window.WebKitBlobBuilder || window.MozBlobBuilder || window.BlobBuilder);
+				bb.append(arraybuffer);
+				var blob = bb.getBlob('application/octet-stream'); // <-- Here's the Blob!
+			}
+
+			// Use the URL object to create a temporary URL
+			var url = (window.webkitURL || window.URL).createObjectURL(blob);
+			location.href = url; // <-- Download!
+		});
+		$("#tabsmain-main").append(exportButton);*/
 		
 		// Reset
 		this.cachedTabs = [];
@@ -283,8 +316,10 @@ PQMAnalisis.prototype = {
 				if(ui.index > 0) {
 					// Only recreate the chart if its tab is not cached (wasn't opened previously)
 					if($.inArray(ui.index, _this.cachedTabs) == -1) {
-						chartConfig = {
+						_this._drawChartAndWidgets(analisisName, analisisName, $(ui.panel).attr('id'));
+						/*chartConfig = {
 							where: analisisName, 
+							title: _this.mainData["title"],
 							indicators: _this.mainData.analisis[analisisName].indicators, 
 							min_time: _this.mainData.options["MINTIME"],
 						};
@@ -300,14 +335,68 @@ PQMAnalisis.prototype = {
 							$.extend(chartConfig, _this.mainData.analisis[analisisName].chart.options)
 						}
 						var ch = _this.chartBuilder[_this.mainData.analisis[analisisName].chart.type](_this.mainData.data, chartConfig);
-						//var ch = ChartAnalyser[analisisName/*analisis[ui.index - 1]*/](_this.mainChart);
-						_this._appendEventsSelectors(ch, analisis[analisisName].events, $(ui.panel));
+						_this._appendEventsSelectors(ch, analisis[analisisName].events, $(ui.panel));*/
 						_this.cachedTabs.push(ui.index);
 					}
 				}
 				return true;
 			}
 		});
+	},
+	
+	_drawChartAndWidgets: function(analisisName, whereChart, whereWidgets) {
+		var _this = this;
+		chartConfig = {
+			where: whereChart, 
+			title: _this.mainData["title"],
+			indicators: _this.mainData.analisis[analisisName].indicators, 
+			min_time: _this.mainData.options["MINTIME"],
+		};
+		// Testing normalization
+		if(_this.mainData.analisis[analisisName].normalization) {
+			if(_this.mainData.analisis[analisisName].normalization.type == "threshold-line") {
+				chartConfig.extras = [{type:"threshold-line", 
+									  value:_this.mainData.analisis[analisisName].normalization.value,
+									  label:_this.mainData.analisis[analisisName].normalization.label }];
+			}	
+		}
+		if(_this.mainData.analisis[analisisName].chart.options) {
+			$.extend(chartConfig, _this.mainData.analisis[analisisName].chart.options)
+		}
+		var ch = _this.chartBuilder[_this.mainData.analisis[analisisName].chart.type](_this.mainData.data, chartConfig);
+		_this._appendEventsSelectors(ch, _this.mainData.analisis[analisisName].events, $("#" + whereWidgets));
+		
+		var exportButton = $("<input type='button' value='Export' id='export-button'></input>").click(function() {
+			items = AmCharts.getExport(whereChart);
+			
+			var img = items[0];
+			// atob to base64_decode the data-URI
+			var image_data = atob(img.src.split(',')[1]);
+			// Use typed arrays to convert the binary data to a Blob
+			var arraybuffer = new ArrayBuffer(image_data.length);
+			var view = new Uint8Array(arraybuffer);
+			for (var i=0; i<image_data.length; i++) {
+				view[i] = image_data.charCodeAt(i) & 0xff;
+			}
+			try {
+				// This is the recommended method:
+				var blob = new Blob([arraybuffer], {type: 'application/octet-stream'});
+			} catch (e) {
+				// The BlobBuilder API has been deprecated in favour of Blob, but older
+				// browsers don't know about the Blob constructor
+				// IE10 also supports BlobBuilder, but since the `Blob` constructor
+				//  also works, there's no need to add `MSBlobBuilder`.
+				a = e;
+				var bb = new (window.WebKitBlobBuilder || window.MozBlobBuilder || window.BlobBuilder);
+				bb.append(arraybuffer);
+				var blob = bb.getBlob('application/octet-stream'); // <-- Here's the Blob!
+			}
+
+			// Use the URL object to create a temporary URL
+			var url = (window.webkitURL || window.URL).createObjectURL(blob);
+			location.href = url; // <-- Download!
+		});
+		$("#" + whereWidgets).append(exportButton);
 	},
 
 	_addParameterSelectors: function(container, selectors, scope, defaultSelected) {
