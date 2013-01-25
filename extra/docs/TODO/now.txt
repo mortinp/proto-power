@@ -1,6 +1,14 @@
 -Crear un area dentro de la pantalla para las acciones adicionales que podemos hacer con el grafico: ver eventos, exportar como imagen, etc.
 Creo que deberia crear como una barra de botones encima o debajo del grafico, que mostraria cada accion; los eventos se pueden mostrar como un menu que se despliega (creo que un componente que parezca un boton, pero que se despliegue, seria mejor), etc.
 ** Usar bootstrap **
+Los eventos los puedo hacer como un checkbox-button-group (y no como tenia pensado con un dropdown); y los parameters selectors como un radio-button-group. NICE IDEA!!!
+
+-Show projects, devices and datablocks info in a better way.
+La informacion la podria presentar parecido a como lo hace github con los proyectos, como si fuera una direccion de un directorio; mas o menos asi:
+
+<nombre proyecto> / <nombre dispositivo> / <nombre datablock>
+
+Cuando el mouse se pase por encima de cada elemento, la informacion completa de cada uno debe aparecer en un tooltip hacia abajo.
 
 -Definir una lista de colores para usar en lo graficos (me puedo fijar en los colores que se usan en los ejemplos de amcharts). Adicionar graficos para el resto de los armonicos y usar estos colores. Tengo que definir al menos 50 colores.
 
