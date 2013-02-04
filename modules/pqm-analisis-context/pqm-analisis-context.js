@@ -38,7 +38,23 @@ PQMAnalisisContext.prototype = {
 				/** 
 				*	INFO
 				*/
-				// Show project info
+				var projectTag = $("<a href='#'>" + contextData.project.name + "</a><span> / </span>");
+				projectTag.attr('title', _this._extractInfoFromObject(contextData.project));
+				projectTag.tooltip();
+				
+				var deviceTag = $("<a href='#'>" + contextData.device.name + "</a><span> / </span>");
+				deviceTag.attr('title', _this._extractInfoFromObject(contextData.device));
+				deviceTag.tooltip();
+				
+				var datablockTag = $("<a href='#'>" + contextData.datablock.name + "</a>");
+				datablockTag.attr('title', _this._extractInfoFromObject(contextData.datablock));
+				datablockTag.tooltip();
+				
+				$("#context-info").empty();
+				$("#context-info").append(projectTag);
+				$("#context-info").append(deviceTag);
+				$("#context-info").append(datablockTag);
+				/*// Show project info
 				var projectContainer = $("#" + _this._places.project_info);
 				projectContainer.empty();
 				projectContainer.append("<p><strong>Project Info</strong></p>");
@@ -59,7 +75,7 @@ PQMAnalisisContext.prototype = {
 				var datablockContainer = $("#" + _this._places.datablock_info);
 				datablockContainer.empty();
 				datablockContainer.append("<p><strong>Datablock Info</strong></p>");
-				datablockContainer.append("<p>Name: " + contextData.datablock.name + "</p>");
+				datablockContainer.append("<p>Name: " + contextData.datablock.name + "</p>");*/
 			
 				
 				/** 
@@ -68,6 +84,7 @@ PQMAnalisisContext.prototype = {
 				// Create analisis objects and its selectors
 				var selDiv = $("#" + _this._places.subanalisis_selector);
 				selDiv.empty();
+				//selDiv.append("<strong>Files: </strong>");
 				var analisis = contextData.analisis;
 				for(var a in analisis) {
 					config = {project: contextData.project, device: contextData.device, datablock: contextData.datablock, analisis: analisis[a]};
@@ -75,10 +92,14 @@ PQMAnalisisContext.prototype = {
 					_this.analisis[a]._addSubanalisisSelectors(selDiv);
 				}
 				
-				// Load default analisis
+				
+				// Load default subanalisis
 				var main = contextData.current_analisis.main;// analisis
 				var subname = contextData.current_analisis.default;// subanalisis
 				_this.analisis[main]._loadSubanalisis(subname);
+				
+				// Create subanalisis buttonset (needs to be created after the default subanalisis was created)
+				selDiv.buttonset();
 				
 				/** 
 				*	REPORTING
@@ -91,6 +112,21 @@ PQMAnalisisContext.prototype = {
 				alert(textStatus + ": " + errorThrown);
 			}
 		});
+	},
+	
+	/**
+	*   AUXILIARY FUNCTIONS
+	*/
+	
+	_extractInfoFromObject: function(obj) {
+		var info = "";
+		var separator = "";
+		for(var attr in obj) {
+			if(attr == 'name' || attr == '_id') continue; // Skip attributes 'name' and '_id'
+			info += separator + attr[0].toUpperCase() + attr.substring(1) + ": " + obj[attr];
+			separator = " | "
+		}
+		return info;
 	},
 };
 
@@ -120,7 +156,7 @@ function PQMAnalisis(pathToThisFile, o) {
 	this._places = {
 		tabs: "tabsmain",
 		subanalisis_selector: "subanalisis-selectors",
-		parameter_selector: "parameter-selectors",
+		parameter_selector: "parameters-selectors",
 		main_chart_panel: "main-chart-panel",
 		events: "events-box",
 	};
@@ -166,12 +202,12 @@ PQMAnalisis.prototype = {
 	},
 	
 	_addSubanalisisSelectors: function(container) {
-		//var selDiv = $("#" + this._places.subanalisis_selector);
-		//selDiv.empty();
+		//container.buttonset();
 		for(var s in this.subanalisis) {
 			var selector = this.subanalisis[s].getSelector();
 			container.append(selector);
 		}
+		//container.buttonset("destroy").buttonset();
 	},
 	
 	_showData: function(type, scope, data) {
@@ -197,8 +233,7 @@ PQMAnalisis.prototype = {
 				"<li><a href='#tabsmain-main'>Main</a></li>" +
 			"</ul>" +
 			"<div id='tabsmain-main' style='padding:4px 2px 2px 2px;'>" +
-				"<div id='" + this._places.parameter_selector + "' style='margin-right:35px;'>" +
-				"</div>" +
+				"<div id='" + this._places.parameter_selector + "' style='margin-right:35px;'></div>" +
 				"<br>" +
 				"<div id='" + this._places.main_chart_panel + "' style='width:100%;height:400px;'></div>" +
 			"</div>";
@@ -296,10 +331,10 @@ PQMAnalisis.prototype = {
 		var ch = _this.chartBuilder[_this.mainData.analisis[analisisName].chart.type](_this.mainData.data, chartConfig);
 		
 		// Append events widget
-		_this._appendEventsSelectors(ch, _this.mainData.analisis[analisisName].events, $("#" + whereWidgets));
+		//_this._appendEventsSelectors(ch, _this.mainData.analisis[analisisName].events, $("#" + whereWidgets));
 		
 		// Create autoexport button widget
-		var exportButton = $("<input type='button' value='Export' id='export-button'></input>").click(function() {
+		/*var exportButton = $("<input type='button' value='Export' id='export-button'></input>").click(function() {
 			items = AmCharts.getExport(whereChart);
 			
 			var img = items[0];
@@ -329,19 +364,20 @@ PQMAnalisis.prototype = {
 			var url = (window.webkitURL || window.URL).createObjectURL(blob);
 			location.href = url; // <-- Download!
 		});
-		$("#" + whereWidgets).append(exportButton);
+		$("#" + whereWidgets).append(exportButton);*/
 	},
 
 	_addParameterSelectors: function(container, selectors, scope, defaultSelected) {
-		container.append("<strong>Load:</strong>");
+		//container.append("<strong>Parameters: </strong>");
 		for(var i=0;i<selectors.length;i++) {
 			container.append(this._createParameterSelector(selectors[i], scope, selectors[i]==defaultSelected?true:false));
 		}
+		container.buttonset();
 	},
 
 	_createParameterSelector: function(type, scope, checked) {
 		var _this = this;
-		var sel = $("<input type='radio' name='load'><strong>" + type + "</strong>");
+		var sel = $("<input type='radio' name='load' id='" + type + "'><label for='" + type + "'>" + type + "</label>");
 		if(checked) sel.attr("checked", true);
 		
 		var selected = false;
@@ -355,17 +391,17 @@ PQMAnalisis.prototype = {
 
 	_appendEventsSelectors: function(chart, events, panel) {
 		var container = $("<div class='events-box' style='width:100%;'></div>");
-		//var container = $("#" + this._places.events);
 		if(events.length != 0) container.append("<p>View events:</p>")
 		for(var i=0;i<events.length;i++) {
 			var eName = events[i];
 			container.append(this._createEventSelector(chart, eName));
 		}
+		container.buttonset();
 		panel.append(container);
 	},
 
 	_createEventSelector: function(chart, eName) {
-		var e = $("<input type='checkbox' id='e-" + eName + "' name='" + eName + "'>" + eName + "</input>");
+		var e = $("<input type='checkbox' id='" + eName + "' name='" + eName + "'><label for='" + eName + "'>" + eName + "</label>");
 		
 		var checked = false;
 		e.click(function() {
@@ -402,7 +438,7 @@ function PQMSubanalisis(o, fnOnRun) {
 	// Callback function executed when the selector is checked
 	this.onRun = fnOnRun; // ex. function(defaultParameter, scope){}
 	
-	this._selector = $("<input type='radio' name='sub-selector'><span>" + this.tag + "</span>");
+	this._selector = $("<input type='radio' name='sub-selector' id='" + this.tag + "'><label for='" + this.tag + "'>" + this.tag + "</label>");
 	this._selector.click(function() {
 		_this.load();
 	});

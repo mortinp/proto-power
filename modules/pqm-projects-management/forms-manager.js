@@ -28,13 +28,13 @@ FormsManager.prototype = {
 	create: function(alias, fnCallback, params) {
 		var action = this.actions[alias];
 		var form = this._loadFormTpl(action.formTpl, action.createHandler);
-		this._buildDialog(form, "Create", fnCallback, params, action.options);
+		this._buildDialog(form, "Create " + alias, fnCallback, params, action.options);
 	},
 	
 	update: function(alias, obj, fnCallback, params) {
 		var action = this.actions[alias];
 		var form = this._loadFormTpl(action.formTpl, action.updateHandler);
-		this._buildUpdateDialog(obj, form, "Update", fnCallback, params, action.options);
+		this._buildUpdateDialog(obj, form, "Update " + alias, fnCallback, params, action.options);
 	},
 	
 	/* Auxiliary functions */

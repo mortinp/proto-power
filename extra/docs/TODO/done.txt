@@ -1,9 +1,25 @@
 -Find projects by user. DONE.
 
+
+
 -Change the chart of harmos to stock chart. DONE.
 
--Hacer el loading de los graficos, registrando un handler en el evento 'init'. DONE (lo hice en el draw()). DONE.
+
+
+-Hacer el loading de los graficos, registrando un handler en el evento 'init'. DONE (lo hice en el draw()). 
+
+
 
 -Crear una validacion en el ChartBuilder, para que si el grafico tiene muchos puntos, entonces se reduzca la cantidad de puntos mostrados al inicio (usar funcion zoom). DONE.
 
+
+-Change graph color when values are over certain threshold. DONE (ex. graph.negativeLineColor = "#999999"; graph.negativeBase = 8;)
+
+
 -Implementar la exportacion como imagen del grafico. DONE (con autoexport)
+
+
+-Show projects, devices and datablocks info in a better way.
+La informacion la podria presentar parecido a como lo hace github con los proyectos, como si fuera una direccion de un directorio; mas o menos asi:
+
+<nombre proyecto> / <nombre dispositivo> / <nombre datablock> DONE.

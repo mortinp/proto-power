@@ -1,4 +1,4 @@
--Change graph color when values are over certain threshold. DONE (ex. graph.negativeLineColor = "#999999"; graph.negativeBase = 8;)
+-Como crear tooltips con texto multilinea???
 
 -Library to create tables (preferably bidimensional tables).
 

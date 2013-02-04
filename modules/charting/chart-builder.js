@@ -75,7 +75,7 @@ ChartBuilder2.prototype = {
 			graph.bullet = "round";
 			graph.bulletSize = 3;
 			graph.lineThickness = 1;
-			graph.negativeLineColor = "#d1655d";
+			//graph.negativeLineColor = this._colors[0];
 			graph.negativeBase = 100000; // A big value to ensure that the graph is regularly under the negative base
 			if(fillAlphas) graph.fillAlphas = fillAlphas;
 			stockPanel.addStockGraph(graph);
@@ -138,11 +138,15 @@ ChartBuilder2.prototype = {
 				guide.inside = true;
 				guide.lineAlpha = 1;
 				guide.lineThickness = 2;
+				guide.inside = false;
+				guide.dashLength = 6;
+				guide.labelRotation = 90;
+				guide.balloonText = guideDef.value;
 				valueAxis.addGuide(guide);
 				
 				// Change graph color above guide
-				chart.dataSets[0].color = "#000000"; // Change color over the threshold
 				graph.negativeBase = guideDef.value;
+				//chart.dataSets[0].color = "#000000"; // Change color over the threshold
 				
 				stockPanel.addValueAxis(valueAxis);
 			}
@@ -287,6 +291,10 @@ ChartBuilder2.prototype = {
 				guide.inside = true;
 				guide.lineAlpha = 1;
 				guide.lineThickness = 2;
+				guide.inside = false;
+				guide.dashLength = 6;
+				guide.labelRotation = 90;
+				guide.balloonText = guideDef.value;
 				valueAxis.addGuide(guide);
 				
 				stockPanel.addValueAxis(valueAxis);

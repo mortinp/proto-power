@@ -16,6 +16,8 @@
 
 //---------- UNFIXED -------------------------
 
+-Al crear buttonsets con jquery-ui-bootstrap, se ejecuta dos veces el onClick de los botones. Esto trae varias consecuencias extrannas.
+
 -Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs o sean selectables mientras no se pinte el grafico.
 
 -Me paso que estaba cargando un fichero, pero la respuesta del servidor se demoro y mientras se guardaba el fichero en el servidor, seleccione otro nodo del treeview; cuando llego la respuesta, se creo un nodo 'file' dentro del nodo que tenia seleccionado, y no dentro del que estaba seleccionado cuando se subio el fichero. Arreglar esto!!!.
