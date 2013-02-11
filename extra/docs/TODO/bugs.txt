@@ -14,9 +14,13 @@
 
 -La WH_SYS se da en KVAH, pero cuando llega a los miles, se da en MVAH. Al expresarse en MVAH los valores comienzan a ser de 1 y pico, y no de 1000 y pico. Esto hace que la grafica caiga de momento, provocando que no se muestre realmente lo que esta pasando. Tengo que valorar como resolver esto. DONE (poniendo las conversiones en la especificacion de la U/M, ej: "KWH|MWH(1000)".. this is a hack).
 
+-Al crear buttonsets con jquery-ui-bootstrap, se ejecuta dos veces el onClick de los botones. Esto trae varias consecuencias extrannas. DONE (tuve que bindear los botones al evento 'change' en vez de al click: b.bind('change', function() {...})).
+
 //---------- UNFIXED -------------------------
 
--Al crear buttonsets con jquery-ui-bootstrap, se ejecuta dos veces el onClick de los botones. Esto trae varias consecuencias extrannas.
+- Los botones de los eventos en las tabs secundarias, se ejecutan en el grafico de la tab Main. Verificar que esta pasando y arreglarlo.
+
+- Cuando le doy modificar en un proyecto, en el formulario no sale la descripcion del mismo en el textarea. Este error aparecio cuando comence a usar jquery-ui-bootstrap. Revisar.
 
 -Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs o sean selectables mientras no se pinte el grafico.
 

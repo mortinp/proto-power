@@ -54,29 +54,6 @@ PQMAnalisisContext.prototype = {
 				$("#context-info").append(projectTag);
 				$("#context-info").append(deviceTag);
 				$("#context-info").append(datablockTag);
-				/*// Show project info
-				var projectContainer = $("#" + _this._places.project_info);
-				projectContainer.empty();
-				projectContainer.append("<p><strong>Project Info</strong></p>");
-				projectContainer.append("<p>Name: " + contextData.project.name + "</p>");
-				projectContainer.append("<p>Description: " + contextData.project.description + "</p>");
-				
-				// Show device info
-				var deviceContainer = $("#" + _this._places.device_info);
-				deviceContainer.empty();
-				deviceContainer.append("<p><strong>Device Info</strong></p>");
-				deviceContainer.append("<p>Name: " + contextData.device.name + "</p>");
-				deviceContainer.append("<p>KVA: " + contextData.device.kva + "</p>");
-				deviceContainer.append("<p>% Reactance: " + contextData.device.reactance + "</p>");
-				deviceContainer.append("<p>Voltage: " + contextData.device.voltage + "</p>");
-				deviceContainer.append("<p>Isc: " + contextData.device.Isc + "</p>");
-				
-				// Show datablock info
-				var datablockContainer = $("#" + _this._places.datablock_info);
-				datablockContainer.empty();
-				datablockContainer.append("<p><strong>Datablock Info</strong></p>");
-				datablockContainer.append("<p>Name: " + contextData.datablock.name + "</p>");*/
-			
 				
 				/** 
 				*	CONTEXT
@@ -84,7 +61,7 @@ PQMAnalisisContext.prototype = {
 				// Create analisis objects and its selectors
 				var selDiv = $("#" + _this._places.subanalisis_selector);
 				selDiv.empty();
-				//selDiv.append("<strong>Files: </strong>");
+				
 				var analisis = contextData.analisis;
 				for(var a in analisis) {
 					config = {project: contextData.project, device: contextData.device, datablock: contextData.datablock, analisis: analisis[a]};
@@ -92,13 +69,13 @@ PQMAnalisisContext.prototype = {
 					_this.analisis[a]._addSubanalisisSelectors(selDiv);
 				}
 				
-				
 				// Load default subanalisis
 				var main = contextData.current_analisis.main;// analisis
 				var subname = contextData.current_analisis.default;// subanalisis
 				_this.analisis[main]._loadSubanalisis(subname);
 				
-				// Create subanalisis buttonset (needs to be created after the default subanalisis was created)
+				// Create subanalisis buttonset 
+				// NOTE: Needs to be created after the default subanalisis is loaded; otherwise, the default button won't be initially selected
 				selDiv.buttonset();
 				
 				/** 
@@ -202,12 +179,10 @@ PQMAnalisis.prototype = {
 	},
 	
 	_addSubanalisisSelectors: function(container) {
-		//container.buttonset();
 		for(var s in this.subanalisis) {
 			var selector = this.subanalisis[s].getSelector();
 			container.append(selector);
 		}
-		//container.buttonset("destroy").buttonset();
 	},
 	
 	_showData: function(type, scope, data) {
@@ -330,11 +305,14 @@ PQMAnalisis.prototype = {
 		}
 		var ch = _this.chartBuilder[_this.mainData.analisis[analisisName].chart.type](_this.mainData.data, chartConfig);
 		
+		// Create chart toolbox (events, export, ...)
+		var toolboxContainer = $("<div class='events-box' style='width:100%;'></div>");
+		
 		// Append events widget
-		//_this._appendEventsSelectors(ch, _this.mainData.analisis[analisisName].events, $("#" + whereWidgets));
+		_this._appendEventsSelectors(ch, _this.mainData.analisis[analisisName].events, toolboxContainer);
 		
 		// Create autoexport button widget
-		/*var exportButton = $("<input type='button' value='Export' id='export-button'></input>").click(function() {
+		var exportButton = $("<input type='button' value='Export' id='export-button' class='toolbox-button'></input>").click(function() {
 			items = AmCharts.getExport(whereChart);
 			
 			var img = items[0];
@@ -364,11 +342,14 @@ PQMAnalisis.prototype = {
 			var url = (window.webkitURL || window.URL).createObjectURL(blob);
 			location.href = url; // <-- Download!
 		});
-		$("#" + whereWidgets).append(exportButton);*/
+		toolboxContainer.append(exportButton);
+		
+		// Create buttonset and append to panel
+		toolboxContainer.buttonset();
+		$("#" + whereWidgets).append('<br>').append(toolboxContainer);
 	},
 
 	_addParameterSelectors: function(container, selectors, scope, defaultSelected) {
-		//container.append("<strong>Parameters: </strong>");
 		for(var i=0;i<selectors.length;i++) {
 			container.append(this._createParameterSelector(selectors[i], scope, selectors[i]==defaultSelected?true:false));
 		}
@@ -381,7 +362,7 @@ PQMAnalisis.prototype = {
 		if(checked) sel.attr("checked", true);
 		
 		var selected = false;
-		sel.click(function() {
+		sel.bind('change', function() { // Normally I would do this with 'click' event, but it won't work with jquery-ui-bootstrap
 			selected = !selected;
 			// Load only if not currently selected
 			if(selected) _this.loadData(type, scope);
@@ -389,29 +370,29 @@ PQMAnalisis.prototype = {
 		return sel;
 	},
 
-	_appendEventsSelectors: function(chart, events, panel) {
-		var container = $("<div class='events-box' style='width:100%;'></div>");
-		if(events.length != 0) container.append("<p>View events:</p>")
+	_appendEventsSelectors: function(chart, events, container) {
 		for(var i=0;i<events.length;i++) {
 			var eName = events[i];
 			container.append(this._createEventSelector(chart, eName));
 		}
-		container.buttonset();
-		panel.append(container);
 	},
 
 	_createEventSelector: function(chart, eName) {
-		var e = $("<input type='checkbox' id='" + eName + "' name='" + eName + "'><label for='" + eName + "'>" + eName + "</label>");
+		var e = $("<input class='toolbox-button' type='checkbox' id='" + eName + "' name='" + eName + "'><label for='" + eName + "'>View " + eName + "</label>");
 		
+		// NOTE: Click event sometimes fails to check the checkbox when you click softly and fast, but click is triggered anyway. 
+		// This may lead to the event being executed but the checkbox not switched (bad behavior). We don't want this!!!
 		var checked = false;
-		e.click(function() {
+		e.bind('change', function() { // Normally I would do this with 'click' event, but it won't work with jquery-ui-bootstrap
 			checked = !checked;
 			if(checked) {
 				chart.addEvents(eName);
 				chart.validateNow();
+				//$(this).attr('checked', true); // Force state change (see note above)
 			} else {
 				chart.removeEvents(eName);
 				chart.validateData();
+				//$(this).attr('checked', false) // Force state change (see note above)
 			}
 		});
 		return e;
@@ -439,7 +420,8 @@ function PQMSubanalisis(o, fnOnRun) {
 	this.onRun = fnOnRun; // ex. function(defaultParameter, scope){}
 	
 	this._selector = $("<input type='radio' name='sub-selector' id='" + this.tag + "'><label for='" + this.tag + "'>" + this.tag + "</label>");
-	this._selector.click(function() {
+	
+	this._selector.bind('change', function() { // Normally I would do this with 'click' event, but it won't work with jquery-ui-bootstrap
 		_this.load();
 	});
 }
