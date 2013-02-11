@@ -210,7 +210,7 @@ PQMAnalisis.prototype = {
 			"<div id='tabsmain-main' style='padding:4px 2px 2px 2px;'>" +
 				"<div id='" + this._places.parameter_selector + "' style='margin-right:35px;'></div>" +
 				"<br>" +
-				"<div id='" + this._places.main_chart_panel + "' style='width:100%;height:400px;'></div>" +
+				"<div id='" + this._places.main_chart_panel + "' class='chart-panel'></div>" +
 			"</div>";
 	
 		// Clear
@@ -260,7 +260,7 @@ PQMAnalisis.prototype = {
 				
 				var newDiv = $("<div class='temp' id='" + panelRef + "' style='padding:4px 2px 2px 2px;'></div>");
 
-				newDiv.append($("<div id='" + an + "' style='width:100%;height:400px;'></div>"));
+				newDiv.append($("<div id='" + an + "' class='chart-panel'></div>"));
 				tabs.append(newDiv);
 			}
 		}

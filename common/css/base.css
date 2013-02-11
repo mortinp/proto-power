@@ -5,3 +5,8 @@
 .events-box {
 	float:left;
 }
+
+.chart-panel {
+    width:100%;
+    height: 500px;
+}

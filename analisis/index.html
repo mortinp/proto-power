@@ -33,11 +33,7 @@
 		<script language="JavaScript" type="text/javascript" src="../common/js/etc/jquery-validation-1.10.0/dist/jquery.validate.js"></script>
 		
 		<!-- BLOCK UI (JQUERY PLUGIN)-->
-		<script language="JavaScript" type="text/javascript" src="../common/js/etc/jquery/plugins/jquery.blockUI.js"></script>
-		
-		<!-- DOCKING -->
-		<link href="../common/js/docking/leftdock-style.css" media="screen" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="../common/js/docking/leftdock.js"></script>
+		<script language="JavaScript" type="text/javascript" src="../common/js/etc/jquery/plugins/jquery.blockUI.js"></script>		
 		
 		<!-- JSTREE -->
 		<script type="text/javascript" src="../common/js/etc/jstree/jquery.jstree.js"></script>
@@ -60,7 +56,9 @@
 		<script type="text/javascript" src="../modules/pqm-projects-management/toolbox.js"></script>
 		<script type="text/javascript" src="../modules/pqm-projects-management/forms-manager.js"></script>
 		<script type="text/javascript" src="../modules/pqm-projects-management/pqm-projects-manager.js"></script>
-		<link href="../modules/pqm-projects-management/css/toolbox.css" media="screen" rel="stylesheet" type="text/css" />
+		<link href="../modules/pqm-projects-management/css/toolbox.css" media="screen" rel="stylesheet/less" type="text/css" />		
+		<link href="../modules/pqm-projects-management/css/leftdock-style.css" media="screen" rel="stylesheet/less" type="text/css" /><!-- DOCKING -->
+		<script type="text/javascript" src="../modules/pqm-projects-management/leftdock.js"></script><!-- DOCKING -->
 		
 		<script type="text/javascript" src="../modules/pqm-analisis-context/pqm-analisis-context.js"></script>
 		<script type="text/javascript" src="../modules/pqm-analisis-context/reporting.js"></script>
@@ -73,12 +71,16 @@
 		<!-- CUSTOM -->
 		<script type="text/javascript" src="js/analisis.js"></script>
 		
+		<!-- LESS (at the end to ensure proper use)-->
+		<link href="../common/js/etc/less/preboot-less/bootstrap.less" media="screen" rel="stylesheet/less" type="text/css" />
+		<script language="JavaScript" type="text/javascript" src="../common/js/etc/less/less-1.3.3.min.js"></script>
+		
 	</head>
 	<body style="overflow:auto;">
 	<ul id="dock" class="ui-widget ui-widget-content">
         <li id="projects-docked-tab">
 			<div class="panel"><br>
-				<div class="tool-box" id="toolbox" style="height: 18px"></div><br>
+				<div class="tool-box" id="toolbox"></div><br>
 				<div id="projects-tree" style="width:255px; height=100%; float:left important!; margin:0; background-color:#F1F1F1;clear:both;overflow-x:scroll;"></div>
 			</div>
 		</li>

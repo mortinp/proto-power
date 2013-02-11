@@ -1,11 +1,14 @@
-/* TOOL-BOX */
+@import 'bootstrap.less';
+
 .tool-box {
-	border:1px solid #666666; 
+    border:1px solid #666666;
 	padding:2px 2px 2px 2px; 
 	overflow:auto;
+	height: 18px;
+    .border-radius (10px);
 }
 
-.tool-button{
+.tool-button {
 	width:16px;
 	height:16px;
 	float:left;
@@ -13,7 +16,7 @@
 }
 
 .button-add-project {
-	background: #F1F1F1 url('../images/icons/folder.png') top left no-repeat;
+	background: #F1F1F1 url('../images/icons/others/add.png') top left no-repeat;
 }
 .button-add-device {
 	background: #F1F1F1 url('../images/icons/print-button.png') top left no-repeat;
