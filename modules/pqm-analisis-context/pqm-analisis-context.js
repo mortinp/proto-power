@@ -41,6 +41,7 @@ PQMAnalisisContext.prototype = {
 				var projectTag = $("<a href='#'>" + contextData.project.name + "</a><span> / </span>");
 				projectTag.attr('title', _this._extractInfoFromObject(contextData.project));
 				projectTag.tooltip();
+				//projectTag.popover({placement:'bottom', html:true});
 				
 				var deviceTag = $("<a href='#'>" + contextData.device.name + "</a><span> / </span>");
 				deviceTag.attr('title', _this._extractInfoFromObject(contextData.device));
@@ -96,12 +97,12 @@ PQMAnalisisContext.prototype = {
 	*/
 	
 	_extractInfoFromObject: function(obj) {
-		var info = "";
-		var separator = "";
+		var info = '';
+		//var separator = '<p>';
 		for(var attr in obj) {
 			if(attr == 'name' || attr == '_id') continue; // Skip attributes 'name' and '_id'
-			info += separator + attr[0].toUpperCase() + attr.substring(1) + ": " + obj[attr];
-			separator = " | "
+			info += '<p>' + attr[0].toUpperCase() + attr.substring(1) + ": " + obj[attr] + '</p>';
+			//separator = ' | '
 		}
 		return info;
 	},

@@ -11,6 +11,7 @@
 	z-index:1000; 
 	background-color:#f0f0f0; 
 	left:0px;
+	.border-radius( 10px );
 }
 
 #dock > li {
@@ -22,7 +23,20 @@
     background-position:left center;
 }
 
-#dock #projects-docked-tab {background-image:url(../images/projects.png);}
+
+
+/* DOCK TABS */
+.dock-tab {
+    .border-radius( 10px );
+}
+
+/*.dock-tab h1 {
+    width: 1em;  
+    font-size: 12px;  
+    letter-spacing: 20px;
+}*/
+
+/*#dock #projects-docked-tab {background-image:url(../images/projects.png);}*/
 
 
 /*#dock > li:hover {background-position:-40px 0px;}*/
