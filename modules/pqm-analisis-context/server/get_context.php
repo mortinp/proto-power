@@ -46,6 +46,7 @@ $aggreg = $collection->aggregate(array(
 				'datablock'=> array('_id'=>'$devices.datablocks._id', 'name'=>'$devices.datablocks.name'),
 				'files'=> '$devices.datablocks.files'))
 ));
+
 */
 
 include_once("../../pqm-projects-management/server/pqm_projects_manager.php");
@@ -61,6 +62,7 @@ $result = $aggreg["result"];
 $analisis = array();
 $type = "none";
 $files = $result[0]["files"];
+$is_default_set = false;
 foreach($files as $f){
 	if($type != $f["type"]) { // New analisis entry
 		$type = $f["type"];
@@ -74,6 +76,13 @@ foreach($files as $f){
 		array("tag"=>$f["tag"],
 			  "default_param"=>$f["default"],
 			  "scope"=>$f["scope"]);
+			  
+    // Store first subanalisis to be the default
+    if($is_default_set == false) {
+        $default_subanalisis = array("main"=>$f["type"], "scope"=>$f["scope"], "default"=>$f["tag"]);
+        $is_default_set = true;
+    }
+    
 }
 
 $response = array(
@@ -81,7 +90,7 @@ $response = array(
 	"device"=>$result[0]["device"],
 	"datablock"=>$result[0]["datablock"],
 	"analisis"=>$analisis,
-	"current_analisis"=>array("main"=>"3P4W", "scope"=>"ALL", "default"=>"3P4W (ALL)"));
+	"current_analisis"=>$default_subanalisis);
 
 echo json_encode($response);
 ?>

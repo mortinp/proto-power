@@ -15,19 +15,22 @@ class ParameterController_HARMO extends ParameterController {
 		$content = $contents[$scope];
 		$data = PQMFileReader::readParametersInFile($content, $indicators, $magnitudes);
 		
-		// Include normalization data
+		// Include normalization data (if 3P4W file exists)
+		$thresholdTHD = 100000; // A big value to hide it in case it's not calculated
 		$powerContents = $this->getFilesContentByType($datablock_id, "3P4W");
-		$content = $powerContents["ALL"];
-		$powerData = PQMFileReader::readParametersInFile($content, array($scope), array("A"));
+		if(isset($powerContents) && isset($powerContents["ALL"])) {
+		    $content = $powerContents["ALL"];
+		    $powerData = PQMFileReader::readParametersInFile($content, array($scope), array("A"));
 		
-		// Find device in DB
-		$proMgr = new PQMProjectsManager();
-		$aggreg = $proMgr->getAggregate($project_id, $device_id);
-		$result = $aggreg["result"];
+		    // Find device in DB
+		    $proMgr = new PQMProjectsManager();
+		    $aggreg = $proMgr->getAggregate($project_id, $device_id);
+		    $result = $aggreg["result"];
 		
-		$device = $result[0]["device"];
+		    $device = $result[0]["device"];
 		
-		$thresholdTHD = $this->calculateThresholdTHD($device, $powerData["data"], $scope);
+		    $thresholdTHD = $this->calculateThresholdTHD($device, $powerData["data"], $scope);
+		}
 		
 		$data["analisis"] = array("main"=>array(
 									"chart"=>array("type"=>"multiGraphStockChart", "options"=>array("disabled"=>array(0,6,7,8,9,10,11,12,13,14,15,16))), 

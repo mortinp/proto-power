@@ -38,16 +38,16 @@ PQMAnalisisContext.prototype = {
 				/** 
 				*	INFO
 				*/
-				var projectTag = $("<a href='#'>" + contextData.project.name + "</a><span> / </span>");
+				var projectTag = $("<a class='info-h1' href='#'>" + contextData.project.name + "</a><span class='info-h1'> / </span>");
 				projectTag.attr('title', _this._extractInfoFromObject(contextData.project));
 				projectTag.tooltip();
 				//projectTag.popover({placement:'bottom', html:true});
 				
-				var deviceTag = $("<a href='#'>" + contextData.device.name + "</a><span> / </span>");
+				var deviceTag = $("<a class='info-h1' href='#'>" + contextData.device.name + "</a><span class='info-h1'> / </span>");
 				deviceTag.attr('title', _this._extractInfoFromObject(contextData.device));
 				deviceTag.tooltip();
 				
-				var datablockTag = $("<a href='#'>" + contextData.datablock.name + "</a>");
+				var datablockTag = $("<a class='info-h1' href='#'>" + contextData.datablock.name + "</a>");
 				datablockTag.attr('title', _this._extractInfoFromObject(contextData.datablock));
 				datablockTag.tooltip();
 				

@@ -55,7 +55,7 @@ function loadData(node) {
 	if(node.type != "datablock") return;
 	
 	// Close projects tabbed panel
-	projectsPanel.toggle('closed');
+	projectsPanel.toggle('closed', true); // Close without animation
 	
 	var parentDevice = treeView.getInmediateParent(node);
 	var parentProject = treeView.getInmediateParent(parentDevice);
