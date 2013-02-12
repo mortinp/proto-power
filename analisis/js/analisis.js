@@ -1,3 +1,4 @@
+var projectsPanel;
 var projectsMgr;
 var toolbox;
 var treeView;
@@ -14,7 +15,7 @@ $(document).ready(function() {
 	loading.ajaxStart(function() {
 		timeout = setTimeout(function() {
 			$.blockUI({ message: loading });
-		}, 1000); // Wait at least some seconds (maybe the remote response is fast)
+		}, 0); // Wait at least some seconds (maybe the remote response is fast)
 		
 	}).ajaxStop(function() {
 		clearTimeout(timeout);
@@ -27,12 +28,9 @@ $(document).ready(function() {
 		$( "#accordion" ).accordion('refresh');
 	}});*/
 	
-
-	// Temporally create tabs to prevent 'unstyled content flash'
-	/*var tabs = $("#tabsmain");
-	tabs.tabs({
-		selected : 0 // 'Main' selected by default
-	});*/
+    /* Setup projects tabbed panel*/	
+	projectsPanel = $('#projects-tabbed-panel').slidingPanel({position:'left', margin:'0em', state:'opened'}).
+	                data('slidingPanel'); // This is the real SlidingPanel object 
 
 	// Create analisis context
 	context = new PQMAnalisisContext("../modules/pqm-analisis-context/", {})
@@ -55,6 +53,9 @@ $(document).ready(function() {
 
 function loadData(node) {
 	if(node.type != "datablock") return;
+	
+	// Close projects tabbed panel
+	projectsPanel.toggle('closed');
 	
 	var parentDevice = treeView.getInmediateParent(node);
 	var parentProject = treeView.getInmediateParent(parentDevice);

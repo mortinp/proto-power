@@ -36,7 +36,17 @@
     letter-spacing: 20px;
 }*/
 
+#projects-tree {
+    width:255px; 
+    height:100%; 
+    float:left important!; 
+    margin:0; 
+    background-color:#F1F1F1;
+    clear:both;overflow-x:scroll;
+}
+
 /*#dock #projects-docked-tab {background-image:url(../images/projects.png);}*/
+
 
 
 /*#dock > li:hover {background-position:-40px 0px;}*/

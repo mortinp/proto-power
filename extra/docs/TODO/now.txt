@@ -1,17 +1,7 @@
--Hacer que el loading message de cuando se esta cargando el grafico salga con unsa sombra...
+-Use session variable to store and retrieve loged-in user. Como implementar la seguridad de una manera elegante???
 
--Crear un area dentro de la pantalla para las acciones adicionales que podemos hacer con el grafico: ver eventos, exportar como imagen, etc.
-Creo que deberia crear como una barra de botones encima o debajo del grafico, que mostraria cada accion; los eventos se pueden mostrar como un menu que se despliega (creo que un componente que parezca un boton, pero que se despliegue, seria mejor), etc.
-** Usar bootstrap **
-Los eventos los puedo hacer como un checkbox-button-group (y no como tenia pensado con un dropdown); y los parameters selectors como un radio-button-group. NICE IDEA!!!
-
--Crear una hoja de estilos basica para el contexto de analisis, que sirva para, por ejemplo: crear el estilo de los paneles de los graficos (width, height, etc), estilos de botones, etc.
-
-
--Cuando el mouse se pase por encima de la informacion de cada elemento (proyecto, dispositivo o datablock), la informacion completa de cada uno debe aparecer en un tooltip hacia abajo. (Hacer que el tooltip se pueda hacer multilinea).
+-Poner un texto que diga 'No context loaded yet' cuando no se haya cargado ningun contexto. Tambien deberian salir las indicaciones de lo que se debe hacer para cargar el contexto, por ejemplo: 'Double click one datablock to load data'.
 
 -Definir una lista de colores para usar en lo graficos (me puedo fijar en los colores que se usan en los ejemplos de amcharts). Adicionar graficos para el resto de los armonicos y usar estos colores. Tengo que definir al menos 50 colores.
 
 -Ask confirmation when deleting projects, devices and datablocks.
-
--Use session variable to store and retrieve loged-in user.

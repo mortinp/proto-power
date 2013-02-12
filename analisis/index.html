@@ -56,9 +56,13 @@
 		<script type="text/javascript" src="../modules/pqm-projects-management/toolbox.js"></script>
 		<script type="text/javascript" src="../modules/pqm-projects-management/forms-manager.js"></script>
 		<script type="text/javascript" src="../modules/pqm-projects-management/pqm-projects-manager.js"></script>
-		<link href="../modules/pqm-projects-management/css/toolbox.css" media="screen" rel="stylesheet/less" type="text/css" />		
-		<link href="../modules/pqm-projects-management/css/leftdock-style.css" media="screen" rel="stylesheet/less" type="text/css" /><!-- DOCKING -->
-		<script type="text/javascript" src="../modules/pqm-projects-management/leftdock.js"></script><!-- DOCKING -->
+		<link href="../modules/pqm-projects-management/css/toolbox.css" media="screen" rel="stylesheet/less" type="text/css" />
+				
+		<!--<link href="../modules/pqm-projects-management/css/leftdock-style.css" media="screen" rel="stylesheet/less" type="text/css" /><!-- DOCKING -->
+		<!--<script type="text/javascript" src="../modules/pqm-projects-management/leftdock.js"></script><!-- DOCKING -->
+		<!--<link rel="stylesheet" href="../common/js/etc/jquery/plugins/slidingPanel/css/reset.css" />-->
+		<link rel="stylesheet" href="../common/js/etc/jquery/plugins/slidingPanel/css/sliding-panel.css" />
+		<script type="text/javascript" src="../common/js/etc/jquery/plugins/slidingPanel/js/jquery.slidingPanel.js"></script>
 		
 		<script type="text/javascript" src="../modules/pqm-analisis-context/pqm-analisis-context.js"></script>
 		<script type="text/javascript" src="../modules/pqm-analisis-context/reporting.js"></script>
@@ -77,15 +81,26 @@
 		
 	</head>
 	<body style="overflow:auto;">
-	<ul id="dock" class="ui-widget ui-widget-content">
+	<!--<ul id="dock" class="ui-widget ui-widget-content">
         <li id="projects-docked-tab" class="dock-tab">
 			<div class="panel"><br>
 				<div class="tool-box" id="toolbox"></div><br>
-				<div id="projects-tree" style="width:255px; height=100%; float:left important!; margin:0; background-color:#F1F1F1;clear:both;overflow-x:scroll;"></div>
+				<div id="projects-tree"></div>
 			</div>
 		</li>
-    </ul>
-	<div id="content">
+    </ul>-->
+    <div id="projects-tabbed-panel"><!-- panel { -->
+        <ul class='tabs'>
+            <li class='tab tab-selected'>
+                <header class='tab-label'><h1>Your Projects</h1></header>
+                <div    class='tab-content'>
+                    <div class="tool-box" id="toolbox"></div><br>
+                    <div id="projects-tree"></div>
+                </div>
+            </li>
+        </ul>
+    </div><!-- panel } -->
+	<div id="content" style="width:95%; float:right">
 		<!--<a href="../index.html" style="float:right">Home</a><br>-->
 		
 		<div id="context-info"></div>
@@ -97,13 +112,9 @@
 		<div id="datablock-info" style="width:20%;float:left"></div>
 		
 		<div id="subanalisis-selectors"></div>
-		
 		<br>
-		
-		<!--<div id="parameters-selectors" style='margin-right:35px;'></div>-->
+
 		<div id="tabsmain"></div>
-		
-		<br>
 		
 		<div id="reports-container" style="clear:both"></div>
 	</div>

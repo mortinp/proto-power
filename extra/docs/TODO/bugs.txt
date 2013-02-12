@@ -16,16 +16,15 @@
 
 -Al crear buttonsets con jquery-ui-bootstrap, se ejecuta dos veces el onClick de los botones. Esto trae varias consecuencias extrannas. DONE (tuve que bindear los botones al evento 'change' en vez de al click: b.bind('change', function() {...})).
 
+- Los botones de los eventos en las tabs secundarias, se ejecutan en el grafico de la tab Main. Verificar que esta pasando y arreglarlo. DONE (le estaba poniendo el mismo id a los botones de las tabs secundarias... big fail!!!).
+
 //---------- UNFIXED -------------------------
 
-- Los botones de los eventos en las tabs secundarias, se ejecutan en el grafico de la tab Main. Verificar que esta pasando y arreglarlo.
+- Me esta pasando que cuando exporto un grafico, los graficos de las demas tabs desaparecen... el getExports() tendra algun bug???
+
 
 - Cuando le doy modificar en un proyecto, en el formulario no sale la descripcion del mismo en el textarea. Este error aparecio cuando comence a usar jquery-ui-bootstrap. Revisar.
 
--Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs o sean selectables mientras no se pinte el grafico.
+-Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs no sean selectables mientras se este pintando el grafico.
 
--Me paso que estaba cargando un fichero, pero la respuesta del servidor se demoro y mientras se guardaba el fichero en el servidor, seleccione otro nodo del treeview; cuando llego la respuesta, se creo un nodo 'file' dentro del nodo que tenia seleccionado, y no dentro del que estaba seleccionado cuando se subio el fichero. Arreglar esto!!!.
-
--The select/pan buttons doesn't refresh when I change from Main tab to Unbalance/THD tabs. When I change tabs, the select button should be selected (this should be the default behavior of every chart). I think the best solution is to integrate these buttons into the chart itself.
-
--El paneo no pincha para los serial charts. Tengo que buscar como hacerlo, porque es diferente que para el stock chart. Lo mejor es extender ambos tipos de charts y que tengan esta funcionalidad embebida.
+-Me paso que estaba cargando un fichero, pero la respuesta del servidor se demoro y mientras se guardaba el fichero en el servidor, seleccione otro nodo del treeview; cuando llego la respuesta, se creo un nodo 'file' dentro del nodo que tenia seleccionado, y no dentro del que estaba seleccionado cuando se subio el fichero. Arreglar esto, tal vez usando deferrables!!!.

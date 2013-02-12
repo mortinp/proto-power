@@ -4,7 +4,7 @@
     /*border:1px solid #666666;*/
 	padding:2px 2px 2px 2px; 
 	overflow:auto;
-	height: 18px;
+	height: auto;
     .border-radius (10px);
 }
 

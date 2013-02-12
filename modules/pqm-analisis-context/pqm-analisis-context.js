@@ -101,7 +101,7 @@ PQMAnalisisContext.prototype = {
 		//var separator = '<p>';
 		for(var attr in obj) {
 			if(attr == 'name' || attr == '_id') continue; // Skip attributes 'name' and '_id'
-			info += '<p>' + attr[0].toUpperCase() + attr.substring(1) + ": " + obj[attr] + '</p>';
+			info += '<p><strong>' + attr[0].toUpperCase() + attr.substring(1) + ":</strong> " + obj[attr] + '</p>';
 			//separator = ' | '
 		}
 		return info;
@@ -379,7 +379,8 @@ PQMAnalisis.prototype = {
 	},
 
 	_createEventSelector: function(chart, eName) {
-		var e = $("<input class='toolbox-button' type='checkbox' id='" + eName + "' name='" + eName + "'><label for='" + eName + "'>View " + eName + "</label>");
+		var eId = chart.placement + "-" + eName; 
+		var e = $("<input class='toolbox-button' type='checkbox' id='" + eId + "' name='" + eName + "'><label for='" + eId + "'>View " + eName + "</label>");
 		
 		// NOTE: Click event sometimes fails to check the checkbox when you click softly and fast, but click is triggered anyway. 
 		// This may lead to the event being executed but the checkbox not switched (bad behavior). We don't want this!!!

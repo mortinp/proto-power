@@ -72,6 +72,8 @@ Add some extensions to AmCharts objects
 	AmCharts.AmStockChart.prototype.draw = function(where) {
 		var _this = this;
 		
+		this.placement = where;
+		
 		// Loading message
 		$("#" + where).block({
 			message: 'Loading chart...'/*'<h1><img src="2.gif" /></h1>'*/, 
