@@ -1,0 +1,3 @@
+-Verificar conexion a la BD y operaciones sobre esta.
+
+-Verificar integridad de ficheros de datos.

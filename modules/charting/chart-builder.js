@@ -10,10 +10,27 @@ function parseDate(dateString) {
     return date;
 }
 
+function getGoodContrastColor(color) {
+    r1 = color[1];
+    r2 = color[2];
+    g1 = color[3];
+    g2 = color[4];
+    b1 = color[5];
+    b2 = color[6];
+    
+    r = r1*16 + r2;
+    g = g1*16 + g2;
+    b = b1*16 + b2;
+    
+    avg = (r + g + b)/3;
+    if(avg > 125) return "#000000";
+    else return "#FFFFFF"
+}
+
 
 function ChartBuilder2(o) {
-	this._colors = ["#d1655d", "#339900", "#3399ff", "#FF3600", "#FF6600", "#FCD202", "#B0DE09", "0D8ECF", "#FF0000", "3300FF",
-					"#2A0CD0", "#CD0D74", "#CC0000", "#00CC00", "#0000CC", "#DDDDDD", "#999999", "#333333", "#990000"];
+	this._colors = ["#FF6600", "#FCD202", "#B0DE09", "#FF3600", "#339900", "#3399ff", "#d1655d", "#00FFFF", "#FF0000", "#CD853F",
+					"#DDA0DD", "#CD0D74", "#CC0000", "#00CC00", "#9370DB", "#FF69B4", "#999999"];
 	
 
 	this._pathConfigs = {
@@ -39,6 +56,7 @@ ChartBuilder2.prototype = {
 			}
 			
 			var chart = new ExtendedStockChart();
+			chart.balloon.color = "#000000";
 			chart.pathToImages = this._pathConfigs.pathToImages;
 			
 			var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -178,6 +196,7 @@ ChartBuilder2.prototype = {
 			}
 			
 			var chart = new ExtendedStockChart();
+			chart.balloon.color = "#000000";
 			chart.pathToImages = this._pathConfigs.pathToImages;
 			
 			var categoryAxesSettings = new AmCharts.CategoryAxesSettings();
@@ -207,7 +226,7 @@ ChartBuilder2.prototype = {
 				graph.type = "line";
 				graph.bullet = "round";
 				graph.bulletSize = 3;
-				graph.balloonText = "[[title]]: [[value]]";
+				graph.balloonText = /*"[[title]]: " + */"[[value]]";
 				graph.lineThickness = 1;
 				graph.hidden = indicators[ind].hidden;
 				

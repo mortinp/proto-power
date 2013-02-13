@@ -1,0 +1,19 @@
+-Add events: max value, min value, ... I could add events under user demand: when the user presses a button to see events. We can even show a list of events associated to a graph (i.e. with checkboxes) and let the user select the ones he wishes to see. DONE.
+
+-Find multiple max and mins. DONE. 
+
+-Fix bug when there are different number of the same event in different datasets. DONE.
+
+-Fix images loading for scrollbar. DONE.
+
+-Upload file. DONE.
+
+-Keep values instead of percentages when comparing datasets. DONE (stockPanel.recalculateToPercents = "never";).
+
+-Load data from uploaded file. DONE.
+
+-Load harmonics. DONE.
+
+-Make the chart not animate after first load. DONE (puse chart.animationPlayed = true despues de dibujar el grafico).
+
+-Improve unbalance/THD chart (put period selector, max/min values, etc.). Show it as a stock chart.DONE.

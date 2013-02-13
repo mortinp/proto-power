@@ -1,0 +1,9 @@
+-Full projects management: list, create, modify and delete resources (projects, directories and files, devices characteristics, etc); show and hide projects to shorten the list. The management should provide a tools/button box to perform the tasks, as well as allow hotkeys and context menus to ease their execution.
+
+-Perform analisis of some parameters/magnitudes like I, V, P, S and H. Analisis include the display of a variety of statistics (min, max, mean, deviation, etc), data analisis and summaries (unbalance, THD, etc), further calculations of data and formula, ...
+
+-Integrate norms with analisis and visualize the expression of these norms in the charts: show threshold lines, critical values and periods, etc.
+
+-Full technical documentation about all the modules created (Developers View).
+
+-Full technical documentation about the power quality areas conveyed in the software (Power Quality Specialists View). This documentation should highlight the values of the application.

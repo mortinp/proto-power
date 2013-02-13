@@ -1,0 +1,2 @@
+-Cuando se tiene cargado un contexto, y se hacen modificaciones al mismo en el arbol del proyecto (ej. se cambia un nombre, se sube o elimina un fichero del datablock, etc.), se deberia mostrar algun warning diciendo que los datos han sido modificados, y que se debe recargar el contexto.
+La mejor forma de hacerlo es poniendo el warning al lado del path del contexto (en la parte donde dice 'pro1/dev1/db1'). Al lado del warning se debe mostrar un boton para recargar el contexto.

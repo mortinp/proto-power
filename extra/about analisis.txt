@@ -1,0 +1,39 @@
+Creo que los calculos de los datos para las curvas de algunos analisis es mejor hacerlos en el sevidor. Por ejemplo, se requiere que la curva del factor de potencia que habria si no existieran armonicos, se muestre junto con la del factor de potencia del sistema. El calculo de este curva incluye el THD asociado a cada una de las corrientes de cada fase, y el factor de potencia de cada fase. Estos datos se encuentran en ficheros separados, y creo que es mejor que se busquen y calculen en el servidor. Asi, en el servidor tendriamos una clase controladora para cada uno de los tipos de analisis que se realizan: I, V, P, S, PF, etc. Los calculos que se realizan para cada uno de estos analisis tambien se deberian hacer en el servidor, e ir junto con los datos normales hacia el cliente. Esto quiere decir que posiblemente los analisis de desbalance y THD se hagan en el servidor (aunque el de THD se realiza en el servidor y se muestra en el cliente).
+
+Para poder realizar los calculos que incluyen mas de un fichero, hay que tener alguna forma de identificar los ficheros segun los datos que estos almacenen (al menos en el caso de los ficheros de armonicos). Por ejemplo, es importante saber si un fichero de armonico es de corriente o voltage, y a que fase pertenece. Esto lo podriamos tener en la BD sin problemas. De esta forma, para realizar cierto calculo, lo unico que necesita saber la clase controladora es que ficheros necesita cargar para realizar esos calculos, y poder discernir los datos que tiene cada uno.
+
+Todo esto nos lleva a que el cliente solo es un interprete de las respuestas que envia el servidor; o sea, el servidor envia despues de cada peticion, todos los datos que el cliente va a usar para mostrar, sin que este ultimo tenga que realizar ningun calculo complejo. Para esto, el servidor debe enviar una respuesta indicando al cliente que datos se usan para cada uno de los analisis. Por ejemplo, una parte de la respuesta puede ser algo como esto (codificada a json):
+
+a) Respuesta cuando se pide el parametro I. Los datos de UNBALANCE son calculados:
+
+analisis: {Main: ["I1", "I2", "I3"], Unbalance: ["UNBALANCE"]}
+
+b) Respuesta cuando se pide el parametro V. Los datos de UNBALANCE son calculados:
+
+analisis: {Main: ["V1", "V2", "V3"], Unbalance: ["UNBALANCE"]}
+
+c) Respuesta cuando se pide el parametro H:
+
+analisis: {Main: ["H1", "H2", "H3" ...], THD: ["THD"]}
+
+d) Respuesta cuando se pide el parametro PF. Los datos de PF_SYS_NO_HARMO son calculados:
+
+analisis: {Main: ["PF_SYS", "PFH_SYS", "PF_SYS_NO_HARMO"]}
+// aqui se podria crear un analisis asi de tipo Loss: ["PF_SYS", "PF_SYS_NO_HARMO"]
+
+NOTA: En todos los casos, los valores que se indican se extraen del dataProvider que se envia al cliente.
+
+Una configuracion mas completa podria ser:
+
+analisis: {Main: {chart: "multiDatasetStockChart", data_indexes: ["I1", "I2", "I3"], events: ["max", "min"]},
+	   Unbalance: {chart: "multiDatasetStockChart", data_indexes: ["UNBALANCE"], events: ["max", "min"]}}
+// El chart podria tambien configurarse, no solamente especificar el tipo.
+
+
+UPDATE: En el caso en que los calculos en el servidor hagan que se demore demasiado la respuesta, entonces lo que se puede hacer es diferenciar los calculos de los analisis, dependiendo si queremos que se realicen en el cliente o en el servidor. En el cliente se preguntaria de que tipo es, para saber si hay que hacer algun calculo o si el calculo ya se realizo en el servidor. Esta claro que los analisis que necesiten de mas de un fichero de datos se deberian realizar en el servidor, pero los que no usan otros ficheros pueden ser calculados en el cliente, e.g. el desbalance.
+
+
+
+TODO: verificar con papa si el factor de potencia del sistema es la suma de los factores de potencia para cada corriente. Probando con los datos en los ficheros, parece que es el promedio de los factores de potencia en cada una de las fases. DONE (si, es el promedio).
+
+TODO: Crear un protocolo de comunicacion entre el cliente y el servidor, en el que se especifiquen los formatos de transferencias de datos entre ambas partes.

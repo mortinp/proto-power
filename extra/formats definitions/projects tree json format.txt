@@ -1,0 +1,67 @@
+/* USER PROJECTS' TREE */
+{
+user_id: "martin",
+projects: [...] // Aquí irían los proyectos, con el formato que se muestra en el ejemplo de abajo.
+}
+
+/* AN EXAMPLE OF A PROJECT */
+{
+id: 1,
+description: "project 1"
+devices: [
+  /* DEVICE 1 */
+  {id: 1, 
+  name: "device 1", 
+  kva: 546, 
+  power: 429,
+  datablocks:[
+    {id: 1,
+    name: "datablock 1",
+    files:[
+      {id: 1, name: "Power", type: "power", sub_type: "power", default_parameter: "I"},
+      {id: 2, name: "Harmo I1", type: "harmo", sub_type: "i1", default_parameter: "H"},
+      {id: 3, name: "Harmo I2", type: "harmo", sub_type: "i2", default_parameter: "H"},
+      {id: 4, name: "Harmo I3", type: "harmo", sub_type: "i3", default_parameter: "H"},
+      {id: 5, name: "Harmo V1", type: "harmo", sub_type: "v1", default_parameter: "H"},
+      {id: 6, name: "Harmo V2", type: "harmo", sub_type: "v2", default_parameter: "H"},
+      {id: 7, name: "Harmo V3", type: "harmo", sub_type: "v3", default_parameter: "H"},
+    ]
+    },
+    
+    {id: 2,
+    name: "datablock 2",
+    files:[
+      {id: 8, name: "Power", type: "power", sub_type: "power", default_parameter: "I"},
+      {id: 9, name: "Harmo I1", type: "harmo", sub_type: "i1", default_parameter: "H"},
+      {id: 10, name: "Harmo I2", type: "harmo", sub_type: "i2", default_parameter: "H"},
+      {id: 11, name: "Harmo I3", type: "harmo", sub_type: "i3", default_parameter: "H"},
+      {id: 12, name: "Harmo V1", type: "harmo", sub_type: "v1", default_parameter: "H"},
+      {id: 13, name: "Harmo V2", type: "harmo", sub_type: "v2", default_parameter: "H"},
+      {id: 14, name: "Harmo V3", type: "harmo", sub_type: "v3", default_parameter: "H"},
+    ]
+    }
+  ]
+  },
+
+  /*  DEVICE 2 */
+  {id: 2, 
+  name: "device 2",
+  kva: 132, 
+  power: 673,
+  datablocks:[
+    {id: 3,
+    name: "datablock 1",
+    files:[
+      {id: 15, name: "Power", type: "power", sub_type: "power", default_parameter: "I"},
+      {id: 16, name: "Harmo I1", type: "harmo", sub_type: "i1", default_parameter: "H"},
+      {id: 17, name: "Harmo I2", type: "harmo", sub_type: "i2", default_parameter: "H"},
+      {id: 18, name: "Harmo I3", type: "harmo", sub_type: "i3", default_parameter: "H"},
+      {id: 19, name: "Harmo V1", type: "harmo", sub_type: "v1", default_parameter: "H"},
+      {id: 20, name: "Harmo V2", type: "harmo", sub_type: "v2", default_parameter: "H"},
+      {id: 21, name: "Harmo V3", type: "harmo", sub_type: "v3", default_parameter: "H"},
+    ]
+    }
+  ]
+  },
+]
+}

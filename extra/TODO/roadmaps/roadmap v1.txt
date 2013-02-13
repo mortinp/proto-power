@@ -1,0 +1,37 @@
+/*    PROJECTS MANAGEMENT  */
+
+-Validate forms.
+
+-Ask confirmation when deleting projects, devices and datablocks.
+
+-Disallow root deletion.
+
+-Allow hotkeys and context menu. (OPTIONAL)
+
+
+/*     ANALISIS           */
+
+-Show projects, devices and datablocks info in a better way.
+
+-Find projects by user (use session variable to store loged-in user).
+
+-Add further calculations.
+
+-Add normalization module.
+
+-Create table view for files data. (OPTIONAL)
+
+/*     REPORTING        */
+
+-Add reporting module.
+
+
+/*     OTHERS            */
+
+-Implement user authentication.
+
+-Styling and theming.
+
+-Exceptions treatment.
+
+-Fix bugs.

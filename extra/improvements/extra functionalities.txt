@@ -1,0 +1,5 @@
+-Mostrar una vista Table de los datos.
+
+-Open/Show and close/hide projects in the tree view navigator.
+
+-En el grafico se podrian resaltar regiones predeterminadas; por ejemplo, se pueden resaltar los horarios pico a traves del analisis de la mayor concentracion de valores criticos.

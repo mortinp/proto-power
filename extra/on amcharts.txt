@@ -1,0 +1,3 @@
+-The chart cursor does not update when I scroll the navigation screen. I looks like it loses the reference to the mouse position, or does not update the current coordinates of the chart rendering. Post a question on amcharts forums, since this is an amcharts bug.
+
+-It would be good if the chart showed a loading animation while it is being built, since this is an operation that may take some time if there are many points to be plotted.
