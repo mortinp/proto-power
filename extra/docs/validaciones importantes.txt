@@ -1,7 +1,0 @@
--Validar que los ficheros que esten en un mismo datablock, tengan la misma cantidad de mediciones, y estas sean en el mismo intante de tiempo.
-
--Validar al calcular el factor de potencia sin armonicos, que existan los ficheros de armonicos para cada una de las fases. De lo contrario, el calculo seria irreal.
-
-UPDATE: Algo que se me ocurrio con las validaciones, es que en el caso de los selectores (I, V, P, S, PF, etc) se pueden mostrar en rojo cuando para que funcionen bien, hagan falta uno o mas ficheros de datos en el datablock. Ademas, se puede poner un tooltip explicando que es lo que falta.
-
--Validar que en cada datablock solo haya un fichero de cada tipo (power, harmo i1/2/3, harmo v1/2/3).

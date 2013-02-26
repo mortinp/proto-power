@@ -1,1 +1,0 @@
--Investigar las tecnicas de medicion de todos los parametros para valorar cuales se pueden incluir y coger algunas ideas de representacion de datos. Incluir tecnicas modernas de representacion de datos (por ejemplo, lo que se puede hacer con D3.js).

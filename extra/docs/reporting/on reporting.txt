@@ -1,4 +1,0 @@
--Creo que una buena forma de mostrar los reportes es con un accordion widget. Este widget permite crear sesiones que se muestran y esconden facilmente, ocupando el minimo espacio.
-A su vez, este widget se podria poner otro widget parecido a un docked panel, pero en la parte inferior, y que se pueda estirar y encoger con el mouse.
-
-

@@ -1,1 +1,0 @@
-- Cuando se cargue un datablock, se puede mostrar en la parte de arriba del contexto de analisis, un warning avizando en el caso de que los ficheros del datablock no esten sincronizados.

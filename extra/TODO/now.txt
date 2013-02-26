@@ -1,5 +1,3 @@
--Buscar como poner el atributo value de un textarea (esto es para mostrar la descipcion de un proyecto en el update dialog).
-
 -Buscar cuales son los colores que usa bootstrap, o que combinaciones pegan bien con bootstrap.
 
 -Use session variable to store and retrieve loged-in user. Como implementar la seguridad de una manera elegante???

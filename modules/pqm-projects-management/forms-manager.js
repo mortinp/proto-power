@@ -77,7 +77,9 @@ FormsManager.prototype = {
 		
 		// Show values in fields
 		for(key in obj) {
-			$("#" + key, form).attr("value", obj[key]);
+		    var field = $("#" + key, form);
+			field.attr("value", obj[key]);
+			if(field.is('textarea')) field.html(obj[key]);
 		}
 		
 		this._doDialog(form, title, fnCallback, options);

@@ -22,11 +22,12 @@
 Lo que tengo que hacer es una de dos cosas: si no existe el fichero de Power, poner cualquiera de Harmo, o cargar por defecto el primer fichero que aparezca en el datablock (para esto tengo que garantizar que los ficheros siempre se obtengan en el mismo orden).
 DONE (lo hice cargando por defecto el primer fichero que aparezca en el datablock).
 
+- Cuando le doy modificar en un proyecto, en el formulario no sale la descripcion del mismo en el textarea. Este error aparecio cuando comence a usar jquery-ui-bootstrap. Revisar.
+DONE (if(field.is('textarea')) field.html(...))
+
 //---------- UNFIXED -------------------------
 
 - Me esta pasando que cuando exporto un grafico, los graficos de las demas tabs desaparecen... el getExports() tendra algun bug???
-
-- Cuando le doy modificar en un proyecto, en el formulario no sale la descripcion del mismo en el textarea. Este error aparecio cuando comence a usar jquery-ui-bootstrap. Revisar.
 
 -Cuando un grafico se esta cargando, si cambiamos de tab, el grafico no se termina de cargar y no se muestra. Tal vez se pueda hacer que las tabs no sean selectables mientras se este pintando el grafico.
 

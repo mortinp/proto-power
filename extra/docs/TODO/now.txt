@@ -1,7 +1,0 @@
--Use session variable to store and retrieve loged-in user. Como implementar la seguridad de una manera elegante???
-
--Poner un texto que diga 'No context loaded yet' cuando no se haya cargado ningun contexto. Tambien deberian salir las indicaciones de lo que se debe hacer para cargar el contexto, por ejemplo: 'Double click one datablock to load data'.
-
--Definir una lista de colores para usar en lo graficos (me puedo fijar en los colores que se usan en los ejemplos de amcharts). Adicionar graficos para el resto de los armonicos y usar estos colores. Tengo que definir al menos 50 colores.
-
--Ask confirmation when deleting projects, devices and datablocks.

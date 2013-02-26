@@ -1,7 +1,0 @@
--Hacer un diagrama que explique los procesos hasta donde los tengo comprendidos.DONE.
-
--Ejecutar los resultados del analisis de los procesos. Lo que voy a hacer es organizar un proyecto con mediciones a dispositivos y ficheros asociados a cada una de estas mediciones. Esto lo tengo que representar en un arbol jerarquico. Ver notas en libreta. DONE.
-
--Hacer que el tab para el desbalance o cualquier otro analisis se genere dinamicamente. Esto permite flexibilizar el analisis que se hace para cada magnitud, pues este puede ser diferente para cada una (puede ser desbalance u otro analisis). De esta forma podemos tener magnitudes que tienen analisis diferentes, o incluso que no llevan analisis. DONE.
-
--Mostrar los graficos de desbalance como stock charts. Los stock charts brindan mas opciones de configuracion y mas tallas.DONE.

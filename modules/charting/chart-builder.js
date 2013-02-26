@@ -92,6 +92,7 @@ ChartBuilder2.prototype = {
 			graph.type = "line";
 			graph.bullet = "round";
 			graph.bulletSize = 3;
+			//graph.balloonText = "[[title]]: " + "[[value]]"; // With multiple datasets, only one shows the title
 			graph.lineThickness = 1;
 			//graph.negativeLineColor = this._colors[0];
 			graph.negativeBase = 100000; // A big value to ensure that the graph is regularly under the negative base
@@ -226,7 +227,7 @@ ChartBuilder2.prototype = {
 				graph.type = "line";
 				graph.bullet = "round";
 				graph.bulletSize = 3;
-				graph.balloonText = /*"[[title]]: " + */"[[value]]";
+				graph.balloonText = "[[title]]: " + "[[value]]";
 				graph.lineThickness = 1;
 				graph.hidden = indicators[ind].hidden;
 				

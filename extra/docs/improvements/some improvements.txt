@@ -1,5 +1,0 @@
-- Hay veces que en el grafico de armonicos, los armonicos de indice mas grande tienen valores bajos muy parecidos, por lo que no se pueden distinguir bien los graficos. Se podria tener alguna utilidad/herramienta que ayude con esto, por ejemplo, una lupa. Tengo que buscar como lograr el efecto lupa con javascript. 
-
-- Seria bueno que el usuario interpretara algunas cosas en la aplicacion de una manera rapida y sencilla, mediante el uso de convenciones que deben ser consistentes en toda la aplicacion.
-
-Por ejemplo, en el caso de los graficos, se pudiera usar el color rojo siempre para los valores malos. Asi, el usuario podria interpretar un grafico con solo darle una ojeada. Asi mismo se pueden adoptar muchas mas convenciones.

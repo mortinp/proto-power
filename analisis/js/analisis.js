@@ -21,12 +21,6 @@ $(document).ready(function() {
 		clearTimeout(timeout);
 		$.unblockUI();
 	});
-
-	/*// Setup widgets for reports
-	$( "#accordion" ).accordion({heightStyle:'fill'}).accordion( "widget" );
-	$( "#reports-container" ).resizable({handles: "n", minHeight:410, resize: function(e, ui) {
-		$( "#accordion" ).accordion('refresh');
-	}});*/
 	
     /* Setup projects tabbed panel*/	
 	projectsPanel = $('#projects-tabbed-panel').slidingPanel({position:'left', margin:'0em', state:'opened'}).

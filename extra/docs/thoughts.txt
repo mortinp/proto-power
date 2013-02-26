@@ -1,5 +1,0 @@
--La aplicacion sintetiza en un solo lugar toda la informacion y los recursos que necesita un especialista para realizar un analisis de energia. Un experto puede necesitar: visualizar la informacion graficamente, consultar la opinion de otro experto, consultar una guia que incluya normas, etc. Todo esto se puede tener sintetizado en la aplicacion.
-
--Si la aplicacion implementa estandares y normas, el nivel de especializacion del experto para hacer el analisis puede ser mas bajo que el requerido con una aplicacion que no las implemente.
-
-- La aplicacion sirve de repositorio de todos los analisis que realiza una empresa/entidad/pais. Los expertos no guardan los resultados de sus analisis por separado, sino que todo se pone en una misma plataforma que en cualquier momento puede ser accedida para realizar estudios de naturaleza estadistica con el fin de mejorar las tecnicas, metodos y conocimientos. Es una knowledge base!!!.
